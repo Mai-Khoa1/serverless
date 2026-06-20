@@ -6,8 +6,11 @@ import "./styles.css";
 
 const router = getRouter();
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>
-);
+const rootEl = document.getElementById("root");
+if (rootEl) {
+  createRoot(rootEl).render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
+  );
+}
