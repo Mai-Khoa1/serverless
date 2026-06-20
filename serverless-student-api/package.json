@@ -1,12 +1,13 @@
 {
   "name": "serverless-student-api",
   "version": "1.0.0",
+  "type": "module",
   "description": "Event-Driven REST API using Serverless Architecture on Vercel",
   "scripts": {
     "dev": "vercel dev",
     "deploy": "vercel --prod"
   },
   "keywords": ["serverless", "api", "vercel", "cloud", "faas"],
-  "author": "Nhóm [Tên nhóm bạn]",
+  "author": "Nhóm DTDM",
   "license": "MIT"
 }
