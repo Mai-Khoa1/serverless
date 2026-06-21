@@ -52,6 +52,7 @@ export default function handler(req: VercelRequest, res: VercelResponse) {
       gpa: typeof body.gpa === "number" ? body.gpa : 0,
       year: typeof body.year === "number" ? body.year : 1,
     };
+    students.push(created);
     return res.status(201).json({ message: "Đã thêm sinh viên thành công", message_en: "Student created", data: created });
   }
 
