@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { requireApiKey } from "./_auth";
 
 type Student = {
   id: number;
@@ -20,9 +21,11 @@ const students: Student[] = [
 export default function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-api-key");
 
   if (req.method === "OPTIONS") return res.status(204).end();
+
+  if (!requireApiKey(req, res)) return; // chặn nếu thiếu/sai x-api-key
 
   if (req.method === "GET") {
     const id = req.query.id;

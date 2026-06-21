@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { requireApiKey } from "./_auth";
 
 function classifyGpa(score: number) {
   if (score >= 3.6) return { rank: "Xuất sắc", rank_en: "Excellent", emoji: "🏆" };
@@ -11,11 +12,13 @@ function classifyGpa(score: number) {
 export default function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, x-api-key");
 
   if (req.method === "OPTIONS") return res.status(204).end();
 
   if (req.method !== "GET") return res.status(405).json({ error: "Method not allowed" });
+
+  if (!requireApiKey(req, res)) return; // chặn nếu thiếu/sai x-api-key
 
   const raw = req.query.score as string;
   const score = Number(raw);
