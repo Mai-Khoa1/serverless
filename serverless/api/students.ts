@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireApiKey } from "./_auth";
+import { requireApiKey } from "./_auth.js";
 
 type Student = {
   id: number;

@@ -55,7 +55,13 @@ export function EndpointCard(props: EndpointCardProps) {
     setLoading(true);
     setResponse(null);
     try {
-      const options: RequestInit = { method, headers: { "Content-Type": "application/json" } };
+      const options: RequestInit = {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_API_KEY ?? "",
+        },
+      };
       if (kind === "post") {
         try {
           options.body = JSON.stringify(JSON.parse(body));

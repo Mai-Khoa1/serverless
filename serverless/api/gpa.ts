@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { requireApiKey } from "./_auth";
+import { requireApiKey } from "./_auth.js";
 
 function classifyGpa(score: number) {
   if (score >= 3.6) return { rank: "Xuất sắc", rank_en: "Excellent", emoji: "🏆" };
