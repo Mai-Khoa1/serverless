@@ -1,4 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { requireApiKey } from "./_auth";
 
 /**
  * Kiểm tra header x-api-key có khớp với biến môi trường API_KEY trên Vercel không.
