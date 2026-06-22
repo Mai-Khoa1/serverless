@@ -28,7 +28,7 @@ async function getStudents(): Promise<Student[]> {
     return await res.json();
   } catch {
     await put(BLOB_KEY, JSON.stringify(DEFAULT_STUDENTS), {
-      access: "public",
+      access: "private",
       contentType: "application/json",
       addRandomSuffix: false,
     });
@@ -38,7 +38,7 @@ async function getStudents(): Promise<Student[]> {
 
 async function saveStudents(students: Student[]) {
   await put(BLOB_KEY, JSON.stringify(students), {
-    access: "public",
+    access: "private",
     contentType: "application/json",
     addRandomSuffix: false,
   });
