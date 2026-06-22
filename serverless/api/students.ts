@@ -1,6 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { put, head } from "@vercel/blob";
-import { requireApiKey } from "./_auth";
+import { put, head, getDownloadUrl } from "@vercel/blob";
 
 type Student = {
   id: number;
@@ -52,7 +51,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(204).end();
-  if (!requireApiKey(req, res)) return;
 
   const students = await getStudents();
 
