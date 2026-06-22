@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { put, head, getDownloadUrl } from "@vercel/blob";
+import { put, head } from "@vercel/blob";
 import { requireApiKey } from "./_auth";
 
 type Student = {
