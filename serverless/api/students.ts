@@ -31,6 +31,7 @@ async function getStudents(): Promise<Student[]> {
       access: "private",
       contentType: "application/json",
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
     return DEFAULT_STUDENTS;
   }
@@ -41,6 +42,7 @@ async function saveStudents(students: Student[]) {
     access: "private",
     contentType: "application/json",
     addRandomSuffix: false,
+    allowOverwrite: true,
   });
 }
 
